@@ -98,7 +98,7 @@ if (!_isVehicle) then {
         } else {
             [getPlayerUID player,profileName,"215"] remoteExecCall ["life_fnc_wantedAdd",RSERV];
         };
-
+        [_curTarget,"CarAlarm"] remoteExec ["life_fnc_say3D",RANY];
         [0,"STR_ISTR_Lock_FailedNOTF",true,[profileName]] remoteExecCall ["life_fnc_broadcast",west];
         titleText[localize "STR_ISTR_Lock_Failed","PLAIN"];
     };
