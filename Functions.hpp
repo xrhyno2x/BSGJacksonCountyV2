@@ -108,6 +108,26 @@ class Life_Client_Core {
         class slotmachine {};
     };
 
+    class Work {
+        file = "core\work";
+        class donald {};
+        class muderking {};
+        class pub {};
+        class union {};
+    };
+
+    class Rob {
+        file = "core\rob";
+        class brighton {};
+        class carshop {};
+        class dmv {};
+        class generic {};
+        class lakeside {};
+        class losdiablos {};
+        class morrison {};
+        class smallville {};
+    };
+
     class Config {
         file = "core\config";
         class houseConfig {};
