@@ -26,10 +26,11 @@ _text2 = _display displayCtrl 1102;
 
 _message = "";
 _message = _message + "<t align='center' size='8' shadow='0'><img image='textures\armalife.jpg' /></t><br /><br />";
-_message = _message + "Useful links (click on the links to open your browser)<br /><br />";
-_message = _message + " <a href='https://github.com/AsYetUntitled/Framework' color='#56BDD6'>AsYetUntitled</a> -- The official repository for the project.<br /><br />";
-_message = _message + "TeamSpeak 3 address: ADDRESS HERE  <br /><br />";
-_message = _message + "Discord invite: <a href='https://discord.gg/EaB7Jgw' color='#56BDD6'>ArmA RPG Life</a>  <br /><br />";
+_message = _message + "Hey there! Welcome to our Custom Jackson County! brought to you by BlindSideGaming  <br /><br />";
+_message = _message + "Please Respect each other at all times  <br /><br />";
+_message = _message + "Make sure you have read our rules found on our website! <br /><br />";
+_message = _message + "Website: <a href='http://www.blindsidegaming.com' color='#56BDD6'>www.BlindSideGaming.com</a> <br /><br />";
+_message = _message + "TeamSpeak 3: ts3.blindsidegaming.com  <br /><br />";
 
 //Fill only the first text
 _text1 ctrlSetStructuredText (parseText _message);

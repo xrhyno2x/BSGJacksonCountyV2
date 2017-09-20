@@ -7,7 +7,7 @@ overviewText = "$STR_MISC_overviewText";    // Text to be displayed below the ov
 #include "config\Config_Master.hpp"
 
 class CfgServer {
-    DatabaseName = "altislife"; //Config name that'll be grep in the extdb-conf.ini. Default: [altislife]
+    DatabaseName = "jacksoncountyv2"; //Config name that'll be grep in the extdb-conf.ini. Default: [altislife]
     DebugMode = 0; //Enable many server/hc debugging logs. Default: 0 (1 = Enabled / 0 = Disabled)
     HeadlessSupport = 0; //Enable/Disable Headless client support. Default: 1 (1 = Enabled / 0 = Disabled)
     /*
@@ -75,12 +75,25 @@ class CfgSounds {
         sound[] = {"\sounds\carUnlock.ogg", 0.25, 1};
         titles[] = {};
     };
-    
+
     class CarAlarm {
         name = "CarAlarm";
         sound[] = {"\sounds\caralarm.ogg", 1.0, 1};
         titles[] = {};
     };
+
+    class copintro {
+        name = "copintro";
+        sound[] = {"\sounds\copintro.ogg", 0.25, 1};
+        titles[] = {};
+    };
+
+    class medicalintro {
+        name = "medicalintro";
+        sound[] = {"\sounds\medicalintro.ogg", 1.0, 1};
+        titles[] = {};
+    };
+
 };
 
 class CfgDebriefing {
