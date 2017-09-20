@@ -164,6 +164,7 @@ class Life_Client_Core {
         class ticketPrompt {};
         class vehInvSearch {};
         class wantedGrab {};
+        class backup {};
     };
 
     class Dialog_Controls {
@@ -242,6 +243,8 @@ class Life_Client_Core {
         class whereAmI {};
         class seatbelt {};
         class randomRound {};
+        class callbackup {};
+        class callbackup2 {};
     };
 
     class Gangs {
@@ -311,6 +314,7 @@ class Life_Client_Core {
         class respawned {};
         class revived {};
         class revivePlayer {};
+        class backup2 {};
     };
 
     class Network {

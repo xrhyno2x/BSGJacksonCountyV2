@@ -125,7 +125,7 @@ class VirtualShops {
         name = "STR_Shops_Cop";
         side = "cop";
         conditions = "";
-        items[] = { "donuts", "coffee", "spikeStrip", "waterBottle", "rabbit", "apple", "redgull", "toolkit", "fuelFull", "defusekit", "defibrillator" };
+        items[] = { "donuts", "coffee","PanicButton", "spikeStrip", "waterBottle", "rabbit", "apple", "redgull", "toolkit", "fuelFull", "defusekit", "defibrillator" };
     };
 };
 
@@ -177,11 +177,11 @@ class VirtualItems {
         edible = -1;
         icon = "\a3\weapons_f\items\data\UI\gear_toolkit_ca.paa";
     };
-    
+
     class zipties {
             variable = "zipties";
             displayName = "STR_Item_ZipTies";
-            weight = 0;
+            weight = 1;
             buyPrice = 1200;
             sellPrice = -1;
             illegal = true;
@@ -192,12 +192,23 @@ class VirtualItems {
     class blindfold {
             variable = "blindfold";
             displayName = "STR_Item_Blindfold";
-            weight = 0;
+            weight = 1;
             buyPrice = 600;
             sellPrice = -1;
             illegal = true;
             edible = -1;
             icon = "icons\blindfold.paa";
+    };
+
+    class panicbutton {
+            variable = "PanicButton";
+            displayName = "STR_Item_PanicButton";
+            weight = 0;
+            buyPrice = 100;
+            sellPrice = 50;
+            illegal = false;
+            edible = -1;
+            icon = "icons\panic.paa";
     };
 
     class fuelEmpty {

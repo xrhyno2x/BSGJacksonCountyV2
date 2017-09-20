@@ -94,6 +94,12 @@ class CfgSounds {
         titles[] = {};
     };
 
+    class panic {
+        name = "panic";
+        sound[] = {"\sounds\panic.ogg", 1.0, 1};
+        titles[] = {};
+    };
+
 };
 
 class CfgDebriefing {
