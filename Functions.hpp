@@ -218,6 +218,8 @@ class Life_Client_Core {
         class tazeSound {};
         class teleport {};
         class whereAmI {};
+        class seatbelt {};
+        class randomRound {};
     };
 
     class Gangs {
@@ -385,4 +387,22 @@ class Life_Client_Core {
 		    class untie {};
 		    class untieb {};
 	   };
+
+     class Market {
+        file = "core\market";
+        class openMarketView {};
+        class refreshMarketView {};
+        class marketShortView {};
+        class marketBuy {};
+        class marketSell {};
+        class marketGetBuyPrice {};
+        class marketGetSellPrice {};
+        class marketconfiguration {};
+        class marketReset {};
+        class marketChange {};
+        class marketGetRow {};
+        class marketGetPriceRow {};
+        class marketSetPriceRow {};
+     };
+
 };
