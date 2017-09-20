@@ -27,5 +27,7 @@ if (hasInterface) then {
     [] execVM "briefing.sqf"; //Load Briefing
 };
 [] execVM "KRON_Strings.sqf";
+[] execVM "scripts\fn_trafficlights.sqf";
+[] execVM "scripts\DynWeather.sqf";
 
 StartProgress = true;
