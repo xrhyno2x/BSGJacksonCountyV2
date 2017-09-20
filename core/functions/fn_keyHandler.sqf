@@ -90,8 +90,8 @@ switch (_code) do {
     //Map Key
     case _mapKey: {
         switch (playerSide) do {
-            case west: {if (!visibleMap) then {[] spawn life_fnc_copMarkers;}};
-            case independent: {if (!visibleMap) then {[] spawn life_fnc_medicMarkers;}};
+            case west: {if (!visibleMap) then {[] spawn life_fnc_copMarkers;} && {[] spawn life_fnc_medicMarkers;}};
+            case independent: {if (!visibleMap) then {[] spawn life_fnc_medicMarkers;} && {[] spawn life_fnc_copMarkers;}};
             case civilian: {if (!visibleMap) then {[] spawn life_fnc_civMarkers;}};
         };
     };
@@ -234,6 +234,26 @@ switch (_code) do {
             };
         };
     };
+
+    //shift+c pioche 4.0 4.3 4.4
+   case 46:
+   {
+       if(_shift && (!life_action_inUse) && (vehicle player == player) ) then
+       {
+     _item = "";
+           {
+               if(typeName _x == typeName "") then {_item = _x;} else {_item = configName _x};
+       _val = ITEM_VALUE(_item);
+               if(_val > 0 ) then
+               {
+                   if( _item == "pickaxe" ) then
+                   {
+                       [] spawn life_fnc_pickAxeUse;
+                   };
+               };  
+           } foreach ("true" configClasses (missionConfigFile >> "VirtualItems"));
+       }
+   };
 
     //U Key
     case 22: {
