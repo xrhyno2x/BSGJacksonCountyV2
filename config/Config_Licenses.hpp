@@ -179,6 +179,46 @@ class Licenses {
         side = "cop";
     };
 
+    class Patrol {
+        variable = "Patrol";
+        displayName = "STR_License_Patrol";
+        price = 15000;
+        illegal = false;
+        side = "cop";
+    };
+
+    class Sheriff {
+        variable = "Sheriff";
+        displayName = "STR_License_Sheriff";
+        price = 8000;
+        illegal = false;
+        side = "cop";
+    };
+
+    class SERT {
+        variable = "SERT";
+        displayName = "STR_License_SERT";
+        price = 15000;
+        illegal = false;
+        side = "cop";
+    };
+
+    class CRT {
+        variable = "CRT";
+        displayName = "STR_License_CRT";
+        price = 8000;
+        illegal = false;
+        side = "cop";
+    };
+
+    class DOC {
+        variable = "DOC";
+        displayName = "STR_License_DOC";
+        price = 8000;
+        illegal = false;
+        side = "cop";
+    };
+
     //Medic Licenses
     class mAir {
         variable = "mAir";
