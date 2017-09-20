@@ -8355,6 +8355,17 @@
             <Portuguese>Vender Garagem</Portuguese>
             <Polish>Sprzedaj garaż</Polish>
         </Key>
+        <Key ID="STR_InsuranceApply">
+            <Original>You just insure your vehicle you are now protected against explosions!</Original>
+            <Czech> Now you insure your vehicle is now protected against explosions ! </Czech> 
+            <Spanish> You just make sure your vehicle is now protected against explosions ! </Spanish>
+            <Italian> Just ensure your vehicle you are now protected against explosions ! </Italian>
+            <Polish> Just insure your vehicle you are now protected from explosion ! </Polish>
+            <Russian> You just insure your car, you are now protected against explosions ! </Russian>
+            <French> You just make your vehicle you are now protected against explosions ! </French>
+            <Portuguese> You just hold your vehicle you are now protected against explosions ! </Portuguese>
+            <German> They only insure your vehicle, you are now protected against explosions ! </German>
+        </Key>
         <Key ID="STR_pInAct_RemoveContainer">
             <Original>Remove Container</Original>
             <Czech>Nádobu</Czech>
@@ -8987,6 +8998,28 @@
             <Italian>Costo Noleggio:</Italian>
             <Portuguese>Alugar:</Portuguese>
             <Polish>Wypożyczenie:</Polish>
+        </Key>
+        <Key ID="STR_SHOP_VEH_UI_Insurance">
+            <Original>Insurance Price:</Original>
+            <French>Prix de l'assurance :</French>
+            <Czech>Cena pojištění :</Czech>
+            <Spanish>Precio del seguro :</Spanish>
+            <Russian></Russian>
+            <German>Versicherungspreis :</German>
+            <Italian>Prezzo di assicurazione :</Italian>
+            <Portuguese>Preço do seguro :</Portuguese>
+            <Polish>Cena ubezpieczenia :</Polish>
+        </Key>
+        <Key ID="STR_SHOP_VEH_UI_StateInsurance">
+            <Original>State Insurance Price:</Original>
+            <French>prix de l'assurance publique :</French>
+            <Czech>státní pojistná cena :</Czech>
+            <Spanish>precio del seguro estatal :</Spanish>
+            <Russian></Russian>
+            <German>Staatliche Versicherungspreis :</German>
+            <Italian>prezzo assicurativo statale :</Italian>
+            <Portuguese>preço do seguro estadual :</Portuguese>
+            <Polish>stanowa cena ubezpieczenia :</Polish>
         </Key>
         <Key ID="STR_Shop_Veh_UI_Ownership">
             <Original>Ownership Price:</Original>

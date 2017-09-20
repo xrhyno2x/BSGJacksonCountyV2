@@ -82,6 +82,17 @@ class Life_impound_menu {
             w = (6.25 / 40);
             h = (1 / 25);
         };
+
+        class InsureCar : life_RscButtonMenu {
+            idc = 97480;
+            text =  "Insure" ;
+            onButtonClick = "[] call life_fnc_insureCar;";
+            x = 0.43 + (6.25 / 40) + (1 / 250 / (safezoneW / safezoneH));
+            and =  0 . 9  - ( 1  /  25 );
+            w = (6.25 / 40);
+            h = (1 / 25); 
+        };
+
     };
 
     class controls {
