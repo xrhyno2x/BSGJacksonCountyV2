@@ -17,6 +17,10 @@ if (playerSide isEqualTo west && {player getVariable ["isEscorting",false]}) exi
     [] call life_fnc_copInteractionMenu;
 };
 
+if (playerSide isEqualTo civilian && {player getVariable ["isEscorting",false]} && (!(_curObject getVariable ["restrained",false]))) exitWith {
+    [] call life_fnc_copInteractionMenu;
+};
+
 if (LIFE_SETTINGS(getNumber,"global_ATM") isEqualTo 1) then{
     //Check if the player is near an ATM.
     if ((call life_fnc_nearATM) && {!dialog}) exitWith {
@@ -94,6 +98,9 @@ if (_curObject isKindOf "Man" && !(_curObject isKindOf "Animal") && {!alive _cur
 if (isPlayer _curObject && _curObject isKindOf "Man") then {
     if ((_curObject getVariable ["restrained",false]) && !dialog && playerSide isEqualTo west) then {
         [_curObject] call life_fnc_copInteractionMenu;
+    };
+    if ((!(_curObject getVariable ["restrained",false])) && !dialog && playerSide isEqualTo civilian) then {
+      [_curObject] call life_fnc_copInteractionMenu;
     };
 } else {
     //OK, it wasn't a player so what is it?

@@ -177,6 +177,28 @@ class VirtualItems {
         edible = -1;
         icon = "\a3\weapons_f\items\data\UI\gear_toolkit_ca.paa";
     };
+    
+    class zipties {
+            variable = "zipties";
+            displayName = "STR_Item_ZipTies";
+            weight = 0;
+            buyPrice = 1200;
+            sellPrice = -1;
+            illegal = true;
+            edible = -1;
+            icon = "icons\ziptie.paa";
+    };
+
+    class blindfold {
+            variable = "blindfold";
+            displayName = "STR_Item_Blindfold";
+            weight = 0;
+            buyPrice = 600;
+            sellPrice = -1;
+            illegal = true;
+            edible = -1;
+            icon = "icons\blindfold.paa";
+    };
 
     class fuelEmpty {
         variable = "fuelEmpty";
