@@ -245,8 +245,8 @@ class Life_Client_Core {
         class whereAmI {};
         class seatbelt {};
         class randomRound {};
-        class callbackup {};
-        class callbackup2 {};
+        class callemsbackup {};
+        class callpolicebackup {};
     };
 
     class Gangs {
