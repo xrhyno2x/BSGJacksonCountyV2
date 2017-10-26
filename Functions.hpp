@@ -106,6 +106,7 @@ class Life_Client_Core {
         class tazed {};
         class slotSpin {};
         class slotmachine {};
+        class hoe {};
     };
 
     class Work {

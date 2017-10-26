@@ -1,19 +1,14 @@
 /*
-*    FORMAT:
-*        STRING (Conditions) - Must return boolean :
-*            String can contain any amount of conditions, aslong as the entire
-*            string returns a boolean. This allows you to check any levels, licenses etc,
-*            in any combination. For example:
-*                "call life_coplevel && license_civ_someLicense"
-*            This will also let you call any other function.
-*            
+*    Format:
+*        level: ARRAY (This is for limiting items to certain things)
+*            0: Variable to read from
+*            1: Variable Value Type (SCALAR / BOOL / EQUAL)
+*            2: What to compare to (-1 = Check Disabled)
+*            3: Custom exit message (Optional)
 *
-*    ARRAY FORMAT:
-*        0: STRING (Classname): Item Classname
-*        1: STRING (Nickname): Nickname that will appear purely in the shop dialog
-*        2: SCALAR (Buy price)
-*        3: SCALAR (Sell price): To disable selling, this should be -1
-*        4: STRING (Conditions): Same as above conditions string
+*    items: { Classname, Itemname, BuyPrice, SellPrice }
+*
+*    Itemname only needs to be filled if you want to rename the original object name.
 *
 *    Weapon classnames can be found here: https://community.bistudio.com/wiki/Arma_3_CfgWeapons_Weapons
 *    Item classnames can be found here: https://community.bistudio.com/wiki/Arma_3_CfgWeapons_Items
@@ -24,79 +19,63 @@ class WeaponShops {
     class gun {
         name = "Billy Joe's Firearms";
         side = "civ";
-        conditions = "license_civ_gun";
+        license = "gun";
+        level[] = { "", "", -1, "" };
         items[] = {
-            { "hgun_Rook40_F", "", 6500, 3250, "" },
-            { "hgun_Pistol_01_F", "", 7000, 3500, "" }, //Apex DLC
-            { "hgun_Pistol_heavy_02_F", "", 9850, 4925, "" },
-            { "hgun_ACPC2_F", "", 11500, 5750, "" },
-            { "SMG_05_F", "", 18000, 9000, "" }, //Apex DLC
-            { "hgun_PDW2000_F", "", 20000, 10000, "" }
+            { "hgun_Rook40_F", "", 6500, 500 },
+            { "hgun_Pistol_heavy_02_F", "", 9850, -1 },
+            { "hgun_ACPC2_F", "", 11500, -1 },
+            { "hgun_PDW2000_F", "", 20000, -1 },
+            { "optic_ACO_grn_smg", "", 2500, 250 }
         };
         mags[] = {
-            { "16Rnd_9x21_Mag", "", 125, 60, "" },
-            { "6Rnd_45ACP_Cylinder", "", 150, 75, "" },
-            { "9Rnd_45ACP_Mag", "", 200, 100, "" },
-            { "30Rnd_9x21_Mag", "", 250, 125, "" },
-            { "30Rnd_9x21_Mag_SMG_02", "", 250, 125, "" }, //Apex DLC
-            { "10Rnd_9x21_Mag", "", 250, 125, "" } //Apex DLC
-        };
-        accs[] = {
-            { "optic_ACO_grn_smg", "", 2500, 1250, "" }
+            { "16Rnd_9x21_Mag", "", 25 },
+            { "6Rnd_45ACP_Cylinder", "", 50 },
+            { "9Rnd_45ACP_Mag", "", 45 },
+            { "30Rnd_9x21_Mag", "", 75 }
         };
     };
 
     class rebel {
         name = "Mohammed's Jihadi Shop";
         side = "civ";
-        conditions = "license_civ_rebel";
+        license = "rebel";
+        level[] = { "", "", -1, "" };
         items[] = {
-            { "arifle_TRG20_F", "", 25000, 12500, "" },
-            { "arifle_Katiba_F", "", 30000, 15000, "" },
-            { "srifle_DMR_01_F", "", 50000, 25000, "" },
-            { "arifle_SDAR_F", "", 20000, 10000, "" },
-            { "arifle_AK12_F", "", 22000, 11000, "" }, //Apex DLC
-            { "arifle_AKS_F", "", 22000, 11000, "" }, //Apex DLC
-            { "arifle_AKM_F", "", 22000, 11000, "" }, //Apex DLC
-            { "arifle_ARX_blk_F", "", 22000, 11000, "" }, //Apex DLC
-            { "arifle_SPAR_01_blk_F", "", 33000, 16500, "" }, //Apex DLC
-            { "arifle_CTAR_blk_F", "", 30000, 15000, "" } //Apex DLC
+            { "arifle_TRG20_F", "", 25000, 2500 },
+            { "arifle_Katiba_F", "", 30000, 5000 },
+            { "srifle_DMR_01_F", "", 50000, -1 },
+            { "arifle_SDAR_F", "", 20000, 7500 },
+            { "optic_ACO_grn", "", 3500, 350 },
+            { "optic_Holosight", "", 3600, 275 },
+            { "optic_Hamr", "", 7500, -1 },
+            { "acc_flashlight", "", 1000, 100 }
         };
         mags[] = {
-            { "30Rnd_556x45_Stanag", "", 300, 150, "" },
-            { "30Rnd_762x39_Mag_F", "", 300, 150, "" }, //Apex DLC
-            { "30Rnd_545x39_Mag_F", "", 300, 150, "" }, //Apex DLC
-            { "30Rnd_65x39_caseless_green", "", 275, 140, "" },
-            { "10Rnd_762x54_Mag", "", 500, 250, "" },
-            { "20Rnd_556x45_UW_mag", "", 125, 60, "" },
-            { "30Rnd_580x42_Mag_F", "", 125, 60, "" } //Apex DLC
-        };
-        accs[] = {
-            { "optic_ACO_grn", "", 3500, 1750, "" },
-            { "optic_Holosight", "", 3600, 1800, "" },
-            { "optic_Hamr", "", 7500, 3750, "" },
-            { "acc_flashlight", "", 1000, 500, "" }
+            { "30Rnd_556x45_Stanag", "", 300 },
+            { "30Rnd_65x39_caseless_green", "", 275 },
+            { "10Rnd_762x54_Mag", "", 500 },
+            { "20Rnd_556x45_UW_mag", "", 125 }
         };
     };
 
     class gang {
         name = "Hideout Armament";
         side = "civ";
-        conditions = "";
+        license = "";
+        level[] = { "", "", -1, "" };
         items[] = {
-            { "hgun_Rook40_F", "", 1500, 750, "" },
-            { "hgun_Pistol_heavy_02_F", "", 2500, 1250, "" },
-            { "hgun_ACPC2_F", "", 4500, 2250, "" },
-            { "hgun_PDW2000_F", "", 9500, 4750, "" }
+            { "hgun_Rook40_F", "", 1500, 500 },
+            { "hgun_Pistol_heavy_02_F", "", 2500, -1 },
+            { "hgun_ACPC2_F", "", 4500, -1 },
+            { "hgun_PDW2000_F", "", 9500, -1 },
+            { "optic_ACO_grn_smg", "", 950, 250 }
         };
         mags[] = {
-            { "16Rnd_9x21_Mag", "", 125, 60, "" },
-            { "6Rnd_45ACP_Cylinder", "", 150, 75, "" },
-            { "9Rnd_45ACP_Mag", "", 200, 100, "" },
-            { "30Rnd_9x21_Mag", "", 250, 125, "" }
-        };
-        accs[] = {
-            { "optic_ACO_grn_smg", "", 950, 475, "" }
+            { "16Rnd_9x21_Mag", "", 25 },
+            { "6Rnd_45ACP_Cylinder", "", 50 },
+            { "9Rnd_45ACP_Mag", "", 45 },
+            { "30Rnd_9x21_Mag", "", 75 }
         };
     };
 
@@ -104,98 +83,418 @@ class WeaponShops {
     class genstore {
         name = "Altis General Store";
         side = "civ";
-        conditions = "";
+        license = "";
+        level[] = { "", "", -1, "" };
         items[] = {
-            { "Binocular", "", 150, 75, "" },
-            { "ItemGPS", "", 100, 50, "" },
-            { "ItemMap", "", 50, 25, "" },
-            { "ItemCompass", "", 50, 25, "" },
-            { "ItemWatch", "", 50, 25, "" },
-            { "FirstAidKit", "", 150, 75, "" },
-            { "NVGoggles", "", 2000, 1000, "" },
-            { "Chemlight_red", "", 300, 150, "" },
-            { "Chemlight_yellow", "", 300, 150, "" },
-            { "Chemlight_green", "", 300, 150, "" },
-            { "Chemlight_blue", "", 300, 150, "" }
+            { "Binocular", "", 150, -1 },
+            { "ItemGPS", "", 100, 45 },
+            { "ItemMap", "", 50, 35 },
+            { "ItemCompass", "", 50, 25 },
+            { "ItemWatch", "", 50, -1 },
+            { "ToolKit", "", 250, 75 },
+            { "FirstAidKit", "", 150, 65 },
+            { "NVGoggles", "", 2000, 980 },
+            { "tf_anprc148jem", "", 300, -1 }
         };
         mags[] = {};
-        accs[] = {};
     };
 
     class f_station_store {
         name = "Altis Fuel Station Store";
         side = "";
-        conditions = "";
+        license = "";
+        level[] = { "", "", -1, "" };
         items[] = {
-            { "Binocular", "", 750, 75, "" },
-            { "ItemGPS", "", 500, 50, "" },
-            { "ItemMap", "", 250, 25, "" },
-            { "ItemCompass", "", 250, 25, "" },
-            { "ItemWatch", "", 250, 25, "" },
-            { "FirstAidKit", "", 750, 75, "" },
-            { "NVGoggles", "", 10000, 1000, "" },
-            { "Chemlight_red", "", 1500, 150, "" },
-            { "Chemlight_yellow", "", 1500, 150, "" },
-            { "Chemlight_green", "", 1500, 150, "" },
-            { "Chemlight_blue", "", 1500, 150, "" }
+            { "Binocular", "", 750, -1 },
+            { "ItemGPS", "", 500, 45 },
+            { "ItemMap", "", 250, 35 },
+            { "ItemCompass", "", 250, 25 },
+            { "ItemWatch", "", 250, -1 },
+            { "ToolKit", "", 1250, 75 },
+            { "FirstAidKit", "", 750, 65 },
+            { "NVGoggles", "", 10000, 980 },
+            { "Chemlight_red", "", 1500, -1 },
+            { "Chemlight_yellow", "", 1500, 50 },
+            { "Chemlight_green", "", 1500, 50 },
+            { "Chemlight_blue", "", 1500, 50 }
         };
         mags[] = {};
-        accs[] = {};
     };
 
     //Cop Shops
     class cop_basic {
-        name = "Altis Cop Shop";
+        name = "Basic Supplies Shop";
         side = "cop";
-        conditions = "";
+        license = "";
+        level[] = { "life_coplevel", "SCALAR", 1, "You must be in the Sheriff's Office!" };
         items[] = {
-            { "Binocular", "", 150, 75, "" },
-            { "ItemGPS", "", 100, 50, "" },
-            { "FirstAidKit", "", 150, 75, "" },
-            { "NVGoggles", "", 2000, 1000, "" },
-            { "HandGrenade_Stone", $STR_W_items_Flashbang, 1700, 850, "" },
-            { "hgun_P07_snds_F", $STR_W_items_StunPistol, 2000, 1000, "" },
-            { "arifle_SDAR_F", $STR_W_items_TaserRifle, 20000, 10000, "" },
-            { "hgun_P07_F", "", 7500, 3750, "" },
-            { "hgun_P07_khk_F", "", 7500, 3750, "" }, //Apex DLC
-            { "hgun_Pistol_heavy_01_F", "", 9500, 4750, "call life_coplevel >= 1" },
-            { "SMG_02_ACO_F", "", 30000, 15000, "call life_coplevel >= 2" },
-            { "arifle_MX_F", "", 35000, 17500, "call life_coplevel >= 2" },
-            { "hgun_ACPC2_F", "", 17500, 8750, "call life_coplevel >= 3" },
-            { "arifle_MXC_F", "", 30000, 15000, "call life_coplevel >= 3" },
-            { "srifle_DMR_07_blk_F", "", 32000, 16000, "call life_coplevel >= 3" } //Apex DLC Sniper
+            {"CG_BATON", "Police Baton", 25, 5},
+			      {"CG_TELBAT", "Police TelBat", 25, 5},
+			      {"pmc_earpiece", "Earpiece", 10, 5},
+			      {"ItemCompass", "", 50, 5},
+			      {"ItemWatch", "", 10 , 5},
+			      {"Taser_26", "Taser", 5, 5},
+			      {"Rangefinder", "", 500, 5},
+			      {"ItemGPS", "", 10, 5},
+			      {"tf_anprc152", "", 10, 5}
         };
         mags[] = {
-            { "16Rnd_9x21_Mag", "", 125, 60, "" },
-            { "20Rnd_556x45_UW_mag", $STR_W_mags_TaserRifle, 125, 60, "" },
-            { "11Rnd_45ACP_Mag", "", 130, 65, "call life_coplevel >= 1" },
-            { "30Rnd_65x39_caseless_mag", "", 130, 65, "call life_coplevel >= 2" },
-            { "30Rnd_9x21_Mag", "", 250, 125, "call life_coplevel >= 2" },
-            { "9Rnd_45ACP_Mag", "", 200, 100, "call life_coplevel >= 3" },
-            { "20Rnd_650x39_Cased_Mag_F", "", 200, 100, "call life_coplevel >= 3" } //Apex DLC
-        };
-        accs[] = {
-            { "muzzle_snds_L", "", 650, 325, "" },
-            { "optic_MRD", "", 2750, 1375, "call life_coplevel >= 1" },
-            { "acc_flashlight", "", 750, 375, "call life_coplevel >= 2" },
-            { "optic_Holosight", "", 1200, 600, "call life_coplevel >= 2" },
-            { "optic_Arco", "", 2500, 1250, "call life_coplevel >= 2" },
-            { "muzzle_snds_H", "", 2750, 1375, "call life_coplevel >= 2" }
+            { "26_cartridge", "", 5 }
         };
     };
+
+	class cop_dit {
+        name = "Deputy in Training Weapon Shop";
+        side = "cop";
+        license = "";
+        level[] = { "life_coplevel", "SCALAR", 1, "You must be a Deputy in Training!" };
+        items[] = {
+            { "RH_g19", "", 200, -1 }
+        };
+        mags[] = {
+
+        };
+    };
+
+	class cop_deputy {
+        name = "Deputy Weapon Shop";
+        side = "cop";
+        license = "";
+        level[] = { "life_coplevel", "SCALAR", 2, "You must be a Deputy!" };
+        items[] = {
+			{ "RH_g19", "", 200, -1 },
+            { "RH_cz75", "", 500, -1 }
+        };
+        mags[] = {
+			{ "RH_17Rnd_9x19_g17", "", 25 },
+            { "RH_16Rnd_9x19_CZ", "", 25 }
+        };
+    };
+
+	class cop_deputyi {
+        name = "DeputyI Weapon Shop";
+        side = "cop";
+        license = "";
+        level[] = { "life_coplevel", "SCALAR", 3, "You must be a DeputyI!" };
+        items[] = {
+            { "RH_g19", "", 200, -1 },
+            { "RH_cz75", "", 500, -1 },
+			{ "RH_sbr9", "", 500, -1 }
+        };
+        mags[] = {
+            { "RH_17Rnd_9x19_g17", "", 25 },
+            { "RH_16Rnd_9x19_CZ", "", 25 },
+			{ "RH_32Rnd_9mm_M822", "", 25, }
+        };
+    };
+
+	class cop_corporal {
+        name = "Corporal Weapon Shop";
+        side = "cop";
+        license = "";
+        level[] = { "life_coplevel", "SCALAR", 4, "You must be a Corporal!" };
+        items[] = {
+            { "RH_g19", "", 200, -1 },
+            { "RH_cz75", "", 500, -1 },
+			{ "RH_sbr9", "", 500, -1 },
+			{ "RH_PDW", "", 500, -1 }
+        };
+        mags[] = {
+            { "RH_17Rnd_9x19_g17", "", 25 },
+            { "RH_16Rnd_9x19_CZ", "", 25 },
+			{ "RH_32Rnd_9mm_M822", "", 25, },
+			{ "RH_30Rnd_6x35_mag", "", 25, }
+        };
+    };
+
+	class cop_sergeant {
+        name = "Sergant Weapon Shop";
+        side = "cop";
+        license = "";
+        level[] = { "life_coplevel", "SCALAR", 5, "You must be a Sergeant!" };
+        items[] = {
+            { "RH_g19", "", 200, -1 },
+            { "RH_cz75", "", 500, -1 },
+			{ "RH_sbr9", "", 500, -1 },
+			{ "RH_PDW", "", 500, -1 },
+			{ "prpl_benelli_14_pgs_rail", "", 500, -1 }
+        };
+        mags[] = {
+            { "RH_17Rnd_9x19_g17", "", 25 },
+            { "RH_16Rnd_9x19_CZ", "", 25 },
+			{ "RH_32Rnd_9mm_M822", "", 25, },
+			{ "RH_30Rnd_6x35_mag", "", 25, },
+			{ "prpl_6Rnd_12Gauge_Slug", "", 25, }
+        };
+    };
+
+	class cop_staffsergeant {
+        name = "Staff Sergeant Weapon Shop";
+        side = "cop";
+        license = "";
+        level[] = { "life_coplevel", "SCALAR", 6, "You must be a Staff Sergeant!" };
+        items[] = {
+            { "RH_g19", "", 200, -1 },
+            { "RH_cz75", "", 500, -1 },
+			{ "RH_sbr9", "", 500, -1 },
+			{ "RH_PDW", "", 500, -1 },
+			{ "prpl_benelli_14_pgs_rail", "", 500, -1 }
+        };
+        mags[] = {
+            { "RH_17Rnd_9x19_g17", "", 25 },
+            { "RH_16Rnd_9x19_CZ", "", 25 },
+			{ "RH_32Rnd_9mm_M822", "", 25, },
+			{ "RH_30Rnd_6x35_mag", "", 25, },
+			{ "prpl_6Rnd_12Gauge_Slug", "", 25, }
+        };
+    };
+
+	class cop_lieutenant {
+        name = "Lieutenant Weapon Shop";
+        side = "cop";
+        license = "";
+        level[] = { "life_coplevel", "SCALAR", 7, "You must be a Lieutenant!" };
+        items[] = {
+            { "RH_g19", "", 200, -1 },
+            { "RH_cz75", "", 500, -1 },
+			{ "RH_sbr9", "", 500, -1 },
+			{ "RH_PDW", "", 500, -1 },
+			{ "prpl_benelli_14_pgs_rail", "", 500, -1 },
+			{ "hlc_rifle_RU556", "", 500, -1 }
+        };
+        mags[] = {
+            { "RH_17Rnd_9x19_g17", "", 25 },
+            { "RH_16Rnd_9x19_CZ", "", 25 },
+			{ "RH_32Rnd_9mm_M822", "", 25, },
+			{ "RH_30Rnd_6x35_mag", "", 25, },
+			{ "prpl_6Rnd_12Gauge_Slug", "", 25, },
+			{ "hlc_30rnd_556x45_EPR", "", 25, }
+        };
+    };
+
+	class cop_captain {
+        name = "Captain Weapon Shop";
+        side = "cop";
+        license = "";
+        level[] = { "life_coplevel", "SCALAR", 8, "You must be a Captain!" };
+        items[] = {
+            { "RH_g19", "", 200, -1 },
+            { "RH_cz75", "", 500, -1 },
+			{ "RH_sbr9", "", 500, -1 },
+			{ "RH_PDW", "", 500, -1 },
+			{ "prpl_benelli_14_pgs_rail", "", 500, -1 },
+			{ "hlc_rifle_RU556", "", 500, -1 }
+        };
+        mags[] = {
+            { "RH_17Rnd_9x19_g17", "", 25 },
+            { "RH_16Rnd_9x19_CZ", "", 25 },
+			{ "RH_32Rnd_9mm_M822", "", 25, },
+			{ "RH_30Rnd_6x35_mag", "", 25, },
+			{ "prpl_6Rnd_12Gauge_Slug", "", 25, },
+			{ "hlc_30rnd_556x45_EPR", "", 25, }
+        };
+    };
+
+	class cop_inspector {
+        name = "Inspector Weapon Shop";
+        side = "cop";
+        license = "";
+        level[] = { "life_coplevel", "SCALAR", 9, "You must be a Inspector!" };
+        items[] = {
+            { "RH_g19", "", 200, -1 },
+            { "RH_cz75", "", 500, -1 },
+			{ "RH_sbr9", "", 500, -1 },
+			{ "RH_PDW", "", 500, -1 },
+			{ "prpl_benelli_14_pgs_rail", "", 500, -1 },
+			{ "hlc_rifle_RU556", "", 500, -1 },
+			{ "RH_fn57", "", 500, -1 }
+        };
+        mags[] = {
+            { "RH_17Rnd_9x19_g17", "", 25 },
+            { "RH_16Rnd_9x19_CZ", "", 25 },
+			{ "RH_32Rnd_9mm_M822", "", 25, },
+			{ "RH_30Rnd_6x35_mag", "", 25, },
+			{ "prpl_6Rnd_12Gauge_Slug", "", 25, },
+			{ "hlc_30rnd_556x45_EPR", "", 25, },
+			{ "RH_20Rnd_57x28_FN", "", 25, }
+        };
+    };
+
+	class cop_departins {
+        name = "Departmental Inspector Weapon Shop";
+        side = "cop";
+        license = "";
+        level[] = { "life_coplevel", "SCALAR", 10, "You must be a Departmental Inspector!" };
+        items[] = {
+            { "RH_g19", "", 200, -1 },
+            { "RH_cz75", "", 500, -1 },
+			{ "RH_sbr9", "", 500, -1 },
+			{ "RH_PDW", "", 500, -1 },
+			{ "prpl_benelli_14_pgs_rail", "", 500, -1 },
+			{ "hlc_rifle_RU556", "", 500, -1 },
+			{ "RH_fn57", "", 500, -1 },
+			{ "RH_bull", "", 500, -1 }
+        };
+        mags[] = {
+            { "RH_17Rnd_9x19_g17", "", 25 },
+            { "RH_16Rnd_9x19_CZ", "", 25 },
+			{ "RH_32Rnd_9mm_M822", "", 25, },
+			{ "RH_30Rnd_6x35_mag", "", 25, },
+			{ "prpl_6Rnd_12Gauge_Slug", "", 25, },
+			{ "hlc_30rnd_556x45_EPR", "", 25, },
+			{ "RH_20Rnd_57x28_FN", "", 25, },
+			{ "RH_6Rnd_454_Mag", "", 25, }
+        };
+    };
+
+	class cop_chiefinspector {
+        name = "Chief Inspector Weapon Shop";
+        side = "cop";
+        license = "";
+        level[] = { "life_coplevel", "SCALAR", 11, "You must be a Chief Inspector!" };
+        items[] = {
+            { "RH_g19", "", 200, -1 },
+            { "RH_cz75", "", 500, -1 },
+			{ "RH_sbr9", "", 500, -1 },
+			{ "RH_PDW", "", 500, -1 },
+			{ "prpl_benelli_14_pgs_rail", "", 500, -1 },
+			{ "hlc_rifle_RU556", "", 500, -1 },
+			{ "RH_fn57", "", 500, -1 },
+			{ "RH_bull", "", 500, -1 },
+			{ "RH_M4A6", "", 500, -1 }
+        };
+        mags[] = {
+            { "RH_17Rnd_9x19_g17", "", 25 },
+            { "RH_16Rnd_9x19_CZ", "", 25 },
+			{ "RH_32Rnd_9mm_M822", "", 25, },
+			{ "RH_30Rnd_6x35_mag", "", 25, },
+			{ "prpl_6Rnd_12Gauge_Slug", "", 25, },
+			{ "hlc_30rnd_556x45_EPR", "", 25, },
+			{ "RH_20Rnd_57x28_FN", "", 25, },
+			{ "RH_6Rnd_454_Mag", "", 25, },
+			{ "RH_30Rnd_68x43_FMJ", "", 25, }
+        };
+    };
+
+	class cop_highcommand {
+        name = "High Command Weapon Shop";
+        side = "cop";
+        license = "";
+        level[] = { "life_coplevel", "SCALAR", 12, "You must be a Deputy in Training!" };
+        items[] = {
+            { "RH_g19", "", 200, -1 },
+            { "RH_cz75", "", 500, -1 },
+			{ "RH_sbr9", "", 500, -1 },
+			{ "RH_PDW", "", 500, -1 },
+			{ "prpl_benelli_14_pgs_rail", "", 500, -1 },
+			{ "hlc_rifle_RU556", "", 500, -1 },
+			{ "RH_fn57", "", 500, -1 },
+			{ "RH_bull", "", 500, -1 },
+			{ "RH_M4A6", "", 500, -1 },
+			{ "RH_bullb", "", 500, -1 },
+			{ "RH_M16A4gl", "", 500, -1 },
+			{ "launch_O_Titan_ghex_F", "Anti-Air", 500, -1 }
+        };
+        mags[] = {
+            { "RH_17Rnd_9x19_g17", "", 25 },
+            { "RH_16Rnd_9x19_CZ", "", 25 },
+			{ "RH_32Rnd_9mm_M822", "", 25, },
+			{ "RH_30Rnd_6x35_mag", "", 25, },
+			{ "prpl_6Rnd_12Gauge_Slug", "", 25, },
+			{ "hlc_30rnd_556x45_EPR", "", 25, },
+			{ "RH_20Rnd_57x28_FN", "", 25, },
+			{ "RH_6Rnd_454_Mag", "", 25, },
+			{ "RH_30Rnd_68x43_FMJ", "", 25, },
+			{ "RH_6Rnd_454_Mag", "", 25, },
+			{ "RH_30Rnd_556x45_M855A1", "", 25, },
+			{ "Titan_AA", "Anti-Air Missile", 25, }
+        };
+    };
+
+    class cop_sert {
+          name = "High Command Weapon Shop";
+          side = "cop";
+          license = "";
+          level[] = { "life_coplevel", "SCALAR", 12, "You must be a Deputy in Training!" };
+          items[] = {
+              { "RH_g19", "", 200, -1 },
+              { "RH_cz75", "", 500, -1 },
+  			{ "RH_sbr9", "", 500, -1 },
+  			{ "RH_PDW", "", 500, -1 },
+  			{ "prpl_benelli_14_pgs_rail", "", 500, -1 },
+  			{ "hlc_rifle_RU556", "", 500, -1 },
+  			{ "RH_fn57", "", 500, -1 },
+  			{ "RH_bull", "", 500, -1 },
+  			{ "RH_M4A6", "", 500, -1 },
+  			{ "RH_bullb", "", 500, -1 },
+  			{ "RH_M16A4gl", "", 500, -1 },
+  			{ "launch_O_Titan_ghex_F", "Anti-Air", 500, -1 }
+          };
+          mags[] = {
+              { "RH_17Rnd_9x19_g17", "", 25 },
+              { "RH_16Rnd_9x19_CZ", "", 25 },
+  			{ "RH_32Rnd_9mm_M822", "", 25, },
+  			{ "RH_30Rnd_6x35_mag", "", 25, },
+  			{ "prpl_6Rnd_12Gauge_Slug", "", 25, },
+  			{ "hlc_30rnd_556x45_EPR", "", 25, },
+  			{ "RH_20Rnd_57x28_FN", "", 25, },
+  			{ "RH_6Rnd_454_Mag", "", 25, },
+  			{ "RH_30Rnd_68x43_FMJ", "", 25, },
+  			{ "RH_6Rnd_454_Mag", "", 25, },
+  			{ "RH_30Rnd_556x45_M855A1", "", 25, },
+  			{ "Titan_AA", "Anti-Air Missile", 25, }
+          };
+      };
+
+      class cop_crt {
+            name = "High Command Weapon Shop";
+            side = "cop";
+            license = "";
+            level[] = { "life_coplevel", "SCALAR", 12, "You must be a Deputy in Training!" };
+            items[] = {
+                { "RH_g19", "", 200, -1 },
+                { "RH_cz75", "", 500, -1 },
+    			{ "RH_sbr9", "", 500, -1 },
+    			{ "RH_PDW", "", 500, -1 },
+    			{ "prpl_benelli_14_pgs_rail", "", 500, -1 },
+    			{ "hlc_rifle_RU556", "", 500, -1 },
+    			{ "RH_fn57", "", 500, -1 },
+    			{ "RH_bull", "", 500, -1 },
+    			{ "RH_M4A6", "", 500, -1 },
+    			{ "RH_bullb", "", 500, -1 },
+    			{ "RH_M16A4gl", "", 500, -1 },
+    			{ "launch_O_Titan_ghex_F", "Anti-Air", 500, -1 }
+            };
+            mags[] = {
+                { "RH_17Rnd_9x19_g17", "", 25 },
+                { "RH_16Rnd_9x19_CZ", "", 25 },
+    			{ "RH_32Rnd_9mm_M822", "", 25, },
+    			{ "RH_30Rnd_6x35_mag", "", 25, },
+    			{ "prpl_6Rnd_12Gauge_Slug", "", 25, },
+    			{ "hlc_30rnd_556x45_EPR", "", 25, },
+    			{ "RH_20Rnd_57x28_FN", "", 25, },
+    			{ "RH_6Rnd_454_Mag", "", 25, },
+    			{ "RH_30Rnd_68x43_FMJ", "", 25, },
+    			{ "RH_6Rnd_454_Mag", "", 25, },
+    			{ "RH_30Rnd_556x45_M855A1", "", 25, },
+    			{ "Titan_AA", "Anti-Air Missile", 25, }
+            };
+        };
 
     //Medic Shops
     class med_basic {
         name = "store";
         side = "med";
-        conditions = "";
+        license = "";
+        level[] = { "", "", -1, "" };
         items[] = {
-            { "ItemGPS", "", 100, 50, "" },
-            { "Binocular", "", 150, 75, "" },
-            { "FirstAidKit", "", 150, 75, "" },
-            { "NVGoggles", "", 1200, 600, "" }
+            { "ItemGPS", "", 100, 45 },
+            { "Binocular", "", 150, -1 },
+            { "ToolKit", "", 250, 75 },
+            { "FirstAidKit", "", 150, 65 },
+            { "Medikit", "", 500, 450 },
+            { "NVGoggles", "", 1200, 980 }
         };
         mags[] = {};
-        accs[] = {};
     };
 };
