@@ -112,7 +112,7 @@ class Life_Client_Core {
     class Work {
         file = "core\work";
         class donald {};
-        class muderking {};
+        class murderking {};
         class pub {};
         class union {};
     };
