@@ -10,9 +10,9 @@
 */
 class CfgSpawnPoints {
 
-  class JacksonCounty {
+  class LakesideValley {
       class Civilian {
-          class lakesidevalley {
+          class lakesidevalleycity {
               displayName = "LakeSide Valley";
               spawnMarker = "civ_spawn_1";
               icon = "\a3\ui_f\data\map\MapControl\watertower_ca.paa";
