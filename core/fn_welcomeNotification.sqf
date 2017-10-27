@@ -30,7 +30,7 @@ _message = _message + "Hey there! Welcome to our Custom Jackson County! brought 
 _message = _message + "Please Respect each other at all times  <br /><br />";
 _message = _message + "Make sure you have read our rules found on our website! <br /><br />";
 _message = _message + "Website: <a href='http://www.blindsidegaming.com' color='#56BDD6'>www.BlindSideGaming.com</a> <br /><br />";
-_message = _message + "TeamSpeak 3: ts3.blindsidegaming.com  <br /><br />";
+_message = _message + "TeamSpeak 3: <a href='ts3server://ts3.blindsidegaming.com'>ts3.blindsidegaming.com</a> <br /><br />";
 
 //Fill only the first text
 _text1 ctrlSetStructuredText (parseText _message);
